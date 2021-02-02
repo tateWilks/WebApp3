@@ -1,3 +1,50 @@
-﻿<div>
-    <h1>Look at all the movies</h1>
+﻿@model IEnumerable<WebApp3.Models.Movie>
+@{
+    ViewBag.Title = "Movie Database";
+}
+
+<div>
+    <h1 style="text-align:center;">Movie Database</h1>
+</div>
+<div>
+    <table id="movieTable">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (WebApp3.Models.Movie movie in Model)
+            {
+                if (movie.Title != "Independence Day")
+                {
+                    <tr>
+                        <td>@movie.Category</td>
+                        <td>@movie.Title</td>
+                        <td>@movie.Year</td>
+                        <td>@movie.Director</td>
+                        <td>@movie.Rating</td>
+                        <td>@if (movie.Edited == true)
+                        {
+                            @:Yes
+                        } else
+                        {
+                            @:No
+                        }
+                        </td>
+                        <td>@movie.LentTo</td>
+                        <td>@movie.Notes</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>

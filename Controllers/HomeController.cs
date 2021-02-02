@@ -36,11 +36,16 @@ namespace WebApp3.Controllers
         [HttpPost]
         public IActionResult MovieForm(Movie newMovie)
         {
+            if (ModelState.IsValid)
+            {
+                Storage.AddMovie(newMovie);
+            }
             return View();
         }
+
         public IActionResult ViewMovies()
         {
-            return View();
+            return View(Storage.Movies);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

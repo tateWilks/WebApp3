@@ -1,0 +1,82 @@
+﻿.inputSection {
+    width: 600px;
+}
+
+.inputSection label {
+    display: inline-block;
+    width: 100px;
+    font-size: 24px;
+    text-align: right;
+}
+
+.radio-input {
+    width: 20px;
+    height: 20px;
+}
+.radio-container {
+    display: inline-flex;
+    margin: 0px 10px 0px 10px;
+}
+.radio-container p {
+    margin-right: 10px;
+}
+
+.inputSection input, select {
+    font-size: 24px;
+    padding: 2px 0px 2px 5px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    transition: 0.3s;
+}
+
+.inputSection input:hover, select:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.submit-container {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    transition: 0.3s;
+    background-color: white;
+    font-size: 24px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+button:hover {
+    transform: translate(0, -5px);
+}
+
+.field-validation-error {
+    margin-left: 10px;
+    font-size: 20px;
+    color: red;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+}
+
+th {
+    padding: 10px 20px 10px 20px;
+    font-size: 28px;
+}
+th:nth-child(2) {
+    width: 200px;
+}
+
+td {
+    font-size: 20px;
+}
+
+tr {
+    border-bottom: 1px solid #e5e5e5;
+}

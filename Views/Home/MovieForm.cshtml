@@ -2,19 +2,20 @@
     ViewBag.Title = "New Movie Form";
 }
 @model WebApp3.Models.Movie
+@using System.ComponentModel.DataAnnotations
 
-<div>
+<div class="container">
     <h1>Enter a New Movie</h1>
 
     <p>Use this form to submit a new movie to the collection.</p>
-    <form id="newMovieForm">
+    <form id="newMovieForm" asp-action="MovieForm" method="post">
         <div class="inputSection">
             <label asp-for="Category">Category</label>
-            <input asp-for="Category" type="text" />
+            <input asp-for="Category" type="text" />@Html.ValidationMessageFor(model => model.Category)
         </div>
         <div class="inputSection">
             <label asp-for="Title">Title</label>
-            <input asp-for="Title" type="text" />
+            <input asp-for="Title" type="text" />@Html.ValidationMessageFor(model => model.Title)
         </div>
         <div class="inputSection">
             <label asp-for="Year">Year</label>
@@ -23,25 +24,30 @@
                 {
                     <option value="@(i + 1921)">@(i + 1921)</option>
                 }
-            </select>
+            </select>@Html.ValidationMessageFor(model => model.Year)
         </div>
         <div class="inputSection">
             <label asp-for="Director">Director</label>
-            <input asp-for="Director" type="text" />
+            <input asp-for="Director" type="text" />@Html.ValidationMessageFor(model => model.Director)
         </div>
         <div class="inputSection">
             <label asp-for="Rating">Rating</label>
             <select asp-for="Rating">
+                <option value=@null>Select One</option>
                 <option value="G">G</option>
                 <option value="PG">PG</option>
                 <option value="PG13">PG-13</option>
                 <option value="R">R</option>
-            </select>
+            </select>@Html.ValidationMessageFor(model => model.Rating)
         </div>
         <div class="inputSection">
             <label asp-for="Edited">Edited</label>
-            <input type="radio" asp-for="Edited" id="true" value="true" />
-            <input type="radio" asp-for="Edited" id="false" value="false" />
+            <div class="radio-container">
+                <p>Yes</p><input type="radio" asp-for="Edited" id="true" value="true" class="radio-input" />
+            </div>
+            <div class="radio-container">
+                <p>No</p><input type="radio" asp-for="Edited" id="false" value="false" class="radio-input" />
+            </div>
         </div>
         <div class="inputSection">
             <label asp-for="LentTo">Lent To</label>
@@ -52,8 +58,65 @@
             <input asp-for="Notes" type="text" />
         </div>
         <div class="inputSection">
-            <button type="submit">Submit</button>
+            <div class="submit-container">
+                <button type="submit">Submit</button>
+            </div>
         </div>
     </form>
 </div>
+
+@*
+    @if (!String.IsNullOrEmpty(Model.Category))
+        {
+            <div class="submitted-value">
+                <h2>Thank you for adding another selection</h2>
+                <p>You added:</p>
+                <div class="movie-info-container">
+                    <table>
+                        <tr>
+                            <td>Category</td>
+                            <td>@Model.Category</td>
+                        </tr>
+                        <tr>
+                            <td>Title</td>
+                            <td>@Model.Title</td>
+                        </tr>
+                        <tr>
+                            <td>Year</td>
+                            <td>@Model.Year</td>
+                        </tr>
+                        <tr>
+                            <td>Director</td>
+                            <td>@Model.Director</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>@Model.Rating</td>
+                        </tr>
+                        <tr>
+                            <td>Edited</td>
+                            <td>
+                                @if (Model.Edited == true)
+                                {
+                                    @:Yes
+                                }
+                                else
+                                {
+                                    @:No
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lent To</td>
+                            <td>@Model.LentTo</td>
+                        </tr>
+                        <tr>
+                            <td>Notes</td>
+                            <td>@Model.Notes</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+*@
 
