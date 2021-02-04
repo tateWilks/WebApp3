@@ -39,6 +39,7 @@ namespace WebApp3.Controllers
             if (ModelState.IsValid)
             {
                 Storage.AddMovie(newMovie);
+                return View("SubmissionConfirmation", newMovie);
             }
             return View();
         }

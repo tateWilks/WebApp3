@@ -40,8 +40,26 @@
                             @:No
                         }
                         </td>
-                        <td>@movie.LentTo</td>
-                        <td>@movie.Notes</td>
+                        <td>
+                            @if (System.String.IsNullOrEmpty(movie.LentTo))
+                            {
+                                @:N/A
+                            }
+                            else
+                            {
+                                @:@movie.LentTo
+                            }
+                        </td>
+                        <td>
+                            @if (System.String.IsNullOrEmpty(movie.Notes))
+                            {
+                                @:N/A
+                            }
+                            else
+                            {
+                                @:@movie.Notes
+                            }
+                        </td>
                     </tr>
                 }
             }

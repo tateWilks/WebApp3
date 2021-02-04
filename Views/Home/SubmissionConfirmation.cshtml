@@ -1,0 +1,76 @@
+﻿@{ 
+    ViewBag.Title = "Movie Added";
+}
+@model WebApp3.Models.Movie
+
+<div>
+    <div class="submitted-value">
+        <h2>Thank you for adding another selection</h2>
+        <p>You added:</p>
+        <div class="movie-info-container">
+            <table class="submitted-movie">
+                <tr>
+                    <td>Title</td>
+                    <td>@Model.Title</td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>@Model.Category</td>
+                </tr>
+                <tr>
+                    <td>Year</td>
+                    <td>@Model.Year</td>
+                </tr>
+                <tr>
+                    <td>Director</td>
+                    <td>@Model.Director</td>
+                </tr>
+                <tr>
+                    <td>Rating</td>
+                    <td>@Model.Rating</td>
+                </tr>
+                <tr>
+                    <td>Edited</td>
+                    <td>
+                        @if (Model.Edited == true)
+                        {
+                            @:Yes
+                        }
+                        else
+                        {
+                            @:No
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lent To</td>
+                    <td>@if (System.String.IsNullOrEmpty(Model.LentTo))
+                    {
+                        @:N/A
+                    } else
+                    {
+                        @:@Model.LentTo
+                    }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Notes</td>
+                    <td>
+                        @if (System.String.IsNullOrEmpty(Model.Notes))
+                        {
+                            @:N/A
+                        }
+                        else
+                        {
+                            @:@Model.Notes
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="button-link-container">
+            <a class="button-link" asp-controller="Home" asp-action="MovieForm">Add Another Movie</a>
+            <a class="button-link" asp-controller="Home" asp-action="Index">Home</a>
+        </div>
+    </div>   
+</div>
